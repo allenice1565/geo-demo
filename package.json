@@ -1,0 +1,48 @@
+{
+    "name": "geo-demo",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "my-linter-scan": "my-linter scan",
+        "my-linter-fix": "my-linter fix",
+        "commit": "npx cz"
+    },
+    "dependencies": {
+        "echarts": "^5.5.0",
+        "vue": "^3.4.19"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "18.0.0",
+        "@commitlint/config-conventional": "18.0.0",
+        "@vitejs/plugin-vue": "^5.0.4",
+        "commitizen": "4.3.0",
+        "commitlint": "18.0.0",
+        "eslint": "8.52.0",
+        "eslint-config-prettier": "9.0.0",
+        "eslint-plugin-vue": "9.17.0",
+        "husky": "8.0.3",
+        "lint-staged": "15.0.2",
+        "my-linter": "^0.0.1",
+        "prettier": "3.0.3",
+        "vite": "^5.1.4",
+        "vue-eslint-parser": "9.3.2"
+    },
+    "lint-staged": {
+        "*.js, *.ts, *.vue, *.jsx, *.tsx": [
+            "eslint --fix",
+            "prettier"
+        ],
+        "*.md, *.less, *.scss": [
+            "prettier"
+        ]
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/my-linter/dist/cz.js"
+        }
+    }
+}

@@ -1,25 +1,25 @@
 <script setup>
 import * as echarts from 'echarts'
-import { ref, onMounted } from 'vue'
-import geoJSON from '@assets/geo-json/SC.json'
+import { ref, onMounted, onUnmounted } from 'vue'
+import geoJSON from '@assets/geo-json/data.json'
 
 const chartEl = ref(null)
 const chartInstance = ref(null)
 onMounted(() => {
     chartInstance.value = echarts.init(chartEl.value)
-    echarts.registerMap('SC', { geoJSON })
+    echarts.registerMap('HC', { geoJSON })
     chartInstance.value.setOption({
         geo: {
             show: true,
-            map: 'SC',
+            map: 'HC',
             nameProperty: 'name',
             selectedMode: 'single',
-            // label: {
-            //     // show: true,
-            //     formatter(data) {
-            //         return data.name
-            //     },
-            // },
+            label: {
+                show: true,
+                formatter(data) {
+                    return data.name
+                },
+            },
             itemStyle: {
                 areaColor: '#fff',
             },
@@ -111,6 +111,10 @@ onMounted(() => {
         //     },
         // ],
     })
+})
+onUnmounted(() => {
+    chartInstance.value.dispose()
+    chartInstance.value = null
 })
 </script>
 
